@@ -1,0 +1,31 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+issueTrackerURL="https://github.com/qefwgrhgj/beeworks/issues"
+
+[[mods]]
+modId="beeworks"
+version="1.0.0"
+displayName="Bee Works"
+updateJSONURL="https://raw.githubusercontent.com/qefwgrhgj/beeworks/main/update.json"
+displayURL="https://modrinth.com/mod/beeworks"
+logoFile="icon.png"
+credits="Abnormals team (original Woodworks inspiration), lupicus (The Bee Fix AI improvements), qefwgrhgj"
+authors="qefwgrhgj"
+description='''
+Bee Works brings standalone wooden beehives for all vanilla and modded wood types, fully standalone with zero Blueprint dependency. Seamlessly integrated with Every Compat (Wood Good) and packed with comprehensive bee AI navigation fixes (The Bee Fix) so bees fly smoothly, never get lost, and can flourish in every dimension!
+'''
+
+[[dependencies.beeworks]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.beeworks]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1,1.20.2)"
+    ordering="NONE"
+    side="BOTH"

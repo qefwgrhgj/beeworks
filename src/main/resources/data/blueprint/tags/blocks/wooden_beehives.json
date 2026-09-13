@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "beeworks:spruce_beehive",
+    "beeworks:birch_beehive",
+    "beeworks:jungle_beehive",
+    "beeworks:acacia_beehive",
+    "beeworks:dark_oak_beehive",
+    "beeworks:mangrove_beehive",
+    "beeworks:cherry_beehive",
+    "beeworks:bamboo_beehive",
+    "beeworks:crimson_beehive",
+    "beeworks:warped_beehive"
+  ]
+}

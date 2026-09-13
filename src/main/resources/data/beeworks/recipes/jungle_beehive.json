@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wooden_beehive",
+  "pattern": [
+    "###",
+    "HHH",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:jungle_planks"
+    },
+    "H": {
+      "item": "minecraft:honeycomb"
+    }
+  },
+  "result": {
+    "item": "beeworks:jungle_beehive"
+  },
+  "show_notification": true
+}

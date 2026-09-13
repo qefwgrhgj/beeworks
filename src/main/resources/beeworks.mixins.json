@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.qefwgrhgj.beeworks.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "beeworks.refmap.json",
+  "mixins": [
+    "BeeGravityMixin",
+    "BeeMixin",
+    "RandomPosMixin",
+    "PathNavigationMixin",
+    "TurtleEggBlockMixin",
+    "LevelMixin"
+  ],
+  "client": [
+    "BeeRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

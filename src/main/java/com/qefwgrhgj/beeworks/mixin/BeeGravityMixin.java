@@ -1,0 +1,24 @@
+package com.qefwgrhgj.beeworks.mixin;
+
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.animal.Bee;
+import net.minecraft.world.level.ServerLevelAccessor;
+import org.jetbrains.annotations.Nullable;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+@Mixin(Mob.class)
+public class BeeGravityMixin {
+    @Inject(method = "finalizeSpawn", at = @At("HEAD"))
+    private void noGravityOnSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag, CallbackInfoReturnable<SpawnGroupData> cir) {
+        if ((Object) this instanceof Bee bee) {
+            bee.setNoGravity(true);
+        }
+    }
+}

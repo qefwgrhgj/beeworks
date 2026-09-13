@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "beeworks:block/crimson_beehive_end",
+    "front": "beeworks:block/crimson_beehive_front",
+    "particle": "beeworks:block/crimson_beehive_side",
+    "side": "beeworks:block/crimson_beehive_side",
+    "top": "beeworks:block/crimson_beehive_end"
+  }
+}
