@@ -62,6 +62,10 @@ Crafted just like vanilla beehives using any wood planks and honeycombs:
 - Tagged under `#minecraft:mineable/axe`.
 - POI registered under `#minecraft:point_of_interest_type/bee_home`.
 
+## 👥 Authors & Credits
+- **Authors**: Guardian, DSCHEL
+- **Credits**: Team Abnormals (original Woodworks inspiration), lupicus (The Bee Fix AI improvements)
+
 ---
 
 ## 📜 License
