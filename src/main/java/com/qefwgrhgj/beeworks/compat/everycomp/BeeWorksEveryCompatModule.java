@@ -25,7 +25,7 @@ public class BeeWorksEveryCompatModule extends SimpleModule {
         beehives = SimpleEntrySet.builder(WoodType.class, "beehive",
                         ModBlocks.SPRUCE_BEEHIVE,
                         () -> VanillaWoodTypes.SPRUCE,
-                        woodType -> new ModBeehiveBlock(Utils.copyPropertySafe(woodType.log))
+                        woodType -> new ModBeehiveBlock(Utils.copyPropertySafe(woodType.log).strength(0.6F))
                 )
                 .addTile(ModBlockEntityTypes.BEEHIVE)
                 .addTextureM(EveryCompat.res("block/spruce_beehive_front_honey"), EveryCompat.res("block/spruce_beehive_front_honey_m"))
@@ -38,7 +38,6 @@ public class BeeWorksEveryCompatModule extends SimpleModule {
                 .addTag(new ResourceLocation("forge:beehives"), Registries.BLOCK, Registries.ITEM)
                 .setTabKey(CreativeModeTabs.FUNCTIONAL_BLOCKS)
                 .defaultRecipe()
-                .copyParentDrop()
                 .build();
 
         this.addEntry(beehives);

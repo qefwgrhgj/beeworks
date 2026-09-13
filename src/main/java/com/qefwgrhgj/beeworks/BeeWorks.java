@@ -34,6 +34,8 @@ public class BeeWorks {
         ModBlockEntityTypes.BLOCK_ENTITY_TYPES.register(modEventBus);
         ModPoiTypes.POI_TYPES.register(modEventBus);
 
+        EveryCompatIntegration.init();
+
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::addCreativeTab);
 
@@ -43,7 +45,6 @@ public class BeeWorks {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(EveryCompatIntegration::init);
     }
 
     private void addCreativeTab(BuildCreativeModeTabContentsEvent event) {
@@ -72,6 +73,30 @@ public class BeeWorks {
                 Item targetItem = ModItems.BEEHIVE_ITEMS.get(path).get();
                 mapping.remap(targetItem);
                 LOGGER.info("Remapped missing item woodworks:{} to beeworks:{}", path, path);
+            }
+        }
+
+        for (var mapping : event.getMappings(ForgeRegistries.Keys.BLOCKS, "everycomp")) {
+            String path = mapping.getKey().getPath();
+            if (path.startsWith("abnww/") && path.endsWith("_beehive")) {
+                String newPath = "bw/" + path.substring("abnww/".length());
+                Block target = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("everycomp", newPath));
+                if (target != null) {
+                    mapping.remap(target);
+                    LOGGER.info("Remapped missing block everycomp:{} to everycomp:{}", path, newPath);
+                }
+            }
+        }
+
+        for (var mapping : event.getMappings(ForgeRegistries.Keys.ITEMS, "everycomp")) {
+            String path = mapping.getKey().getPath();
+            if (path.startsWith("abnww/") && path.endsWith("_beehive")) {
+                String newPath = "bw/" + path.substring("abnww/".length());
+                Item target = ForgeRegistries.ITEMS.getValue(new ResourceLocation("everycomp", newPath));
+                if (target != null) {
+                    mapping.remap(target);
+                    LOGGER.info("Remapped missing item everycomp:{} to everycomp:{}", path, newPath);
+                }
             }
         }
     }

@@ -16,7 +16,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.20.1-1.0.0'
+version = '1.20.1-1.0.1'
 group = 'com.qefwgrhgj.beeworks'
 archivesBaseName = 'beeworks'
 

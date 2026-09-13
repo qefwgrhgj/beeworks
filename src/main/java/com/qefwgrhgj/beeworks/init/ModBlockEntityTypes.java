@@ -13,6 +13,6 @@ public class ModBlockEntityTypes {
 
     public static final RegistryObject<BlockEntityType<ModBeehiveBlockEntity>> BEEHIVE =
             BLOCK_ENTITY_TYPES.register("beehive", () ->
-                    BlockEntityType.Builder.of(ModBeehiveBlockEntity::new, ModBlocks.getBeehivesArray()).build(null)
+                    BlockEntityType.Builder.of(ModBeehiveBlockEntity::new, ModBlocks.getAllBeehivesArray()).build(null)
             );
 }

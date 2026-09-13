@@ -41,10 +41,25 @@ public class ModBlocks {
         return BEEHIVES.values().stream().map(RegistryObject::get).toArray(Block[]::new);
     }
 
+    public static Block[] getAllBeehivesArray() {
+        Set<Block> set = new HashSet<>(Arrays.asList(getBeehivesArray()));
+        for (Block block : ForgeRegistries.BLOCKS) {
+            if (block instanceof ModBeehiveBlock) {
+                set.add(block);
+            }
+        }
+        return set.toArray(Block[]::new);
+    }
+
     public static Set<BlockState> getAllBeehiveBlockStates() {
         Set<BlockState> states = new HashSet<>();
         for (RegistryObject<Block> reg : BEEHIVES.values()) {
             states.addAll(reg.get().getStateDefinition().getPossibleStates());
+        }
+        for (Block block : ForgeRegistries.BLOCKS) {
+            if (block instanceof ModBeehiveBlock) {
+                states.addAll(block.getStateDefinition().getPossibleStates());
+            }
         }
         return states;
     }
