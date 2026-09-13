@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT"
+issueTrackerURL="https://github.com/qefwgrhgj/beeworks/issues"
+
+[[mods]]
+modId="beeworks"
+version="1.0.0"
+displayName="Bee Works"
+displayURL="https://modrinth.com/mod/beeworks"
+authors="Guardian, DSCHEL"
+description='''Adds wooden beehive variants and fixes bee AI, nest navigation, gravity, and turtle egg trampling for Minecraft 1.21.1!'''
+
+[[mixins]]
+config="beeworks.mixins.json"
+
+[[dependencies.beeworks]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.233,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.beeworks]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1]"
+ordering="NONE"
+side="BOTH"

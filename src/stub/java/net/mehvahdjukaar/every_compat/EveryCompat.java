@@ -4,6 +4,6 @@ import net.minecraft.resources.ResourceLocation;
 
 public class EveryCompat {
     public static ResourceLocation res(String path) {
-        return new ResourceLocation("everycomp", path);
+        return ResourceLocation.fromNamespaceAndPath("everycomp", path);
     }
 }

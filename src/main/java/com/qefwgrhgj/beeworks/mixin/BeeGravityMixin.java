@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Mob.class)
 public class BeeGravityMixin {
     @Inject(method = "finalizeSpawn", at = @At("HEAD"))
-    private void noGravityOnSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag, CallbackInfoReturnable<SpawnGroupData> cir) {
+    private void noGravityOnSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData groupData, CallbackInfoReturnable<SpawnGroupData> cir) {
         if ((Object) this instanceof Bee bee) {
             bee.setNoGravity(true);
         }

@@ -5,19 +5,13 @@ import com.qefwgrhgj.beeworks.init.ModBlockEntityTypes;
 import com.qefwgrhgj.beeworks.init.ModBlocks;
 import com.qefwgrhgj.beeworks.init.ModItems;
 import com.qefwgrhgj.beeworks.init.ModPoiTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.MissingMappingsEvent;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,9 +20,7 @@ public class BeeWorks {
     public static final String MOD_ID = "beeworks";
     public static final Logger LOGGER = LogManager.getLogger(BeeWorks.class);
 
-    public BeeWorks() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
+    public BeeWorks(IEventBus modEventBus) {
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModBlockEntityTypes.BLOCK_ENTITY_TYPES.register(modEventBus);
@@ -36,8 +28,6 @@ public class BeeWorks {
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::addCreativeTab);
-
-        MinecraftForge.EVENT_BUS.addListener(this::remapMissing);
 
         LOGGER.info("Bee Works initialized successfully! Buzzing into action.");
     }
@@ -48,30 +38,15 @@ public class BeeWorks {
 
     private void addCreativeTab(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-            Item beforeItem = Items.BEEHIVE;
+            net.minecraft.world.item.ItemStack beforeStack = Items.BEEHIVE.getDefaultInstance();
             for (var itemReg : ModItems.BEEHIVE_ITEMS.values()) {
-                event.getEntries().putAfter(beforeItem.getDefaultInstance(), itemReg.get().getDefaultInstance(), net.minecraft.world.item.CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-                beforeItem = itemReg.get();
-            }
-        }
-    }
-
-    private void remapMissing(MissingMappingsEvent event) {
-        for (var mapping : event.getMappings(ForgeRegistries.Keys.BLOCKS, "woodworks")) {
-            String path = mapping.getKey().getPath();
-            if (ModBlocks.BEEHIVES.containsKey(path)) {
-                Block targetBlock = ModBlocks.BEEHIVES.get(path).get();
-                mapping.remap(targetBlock);
-                LOGGER.info("Remapped missing block woodworks:{} to beeworks:{}", path, path);
-            }
-        }
-
-        for (var mapping : event.getMappings(ForgeRegistries.Keys.ITEMS, "woodworks")) {
-            String path = mapping.getKey().getPath();
-            if (ModItems.BEEHIVE_ITEMS.containsKey(path)) {
-                Item targetItem = ModItems.BEEHIVE_ITEMS.get(path).get();
-                mapping.remap(targetItem);
-                LOGGER.info("Remapped missing item woodworks:{} to beeworks:{}", path, path);
+                net.minecraft.world.item.ItemStack itemStack = itemReg.get().getDefaultInstance();
+                try {
+                    event.insertAfter(beforeStack, itemStack, net.minecraft.world.item.CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+                    beforeStack = itemStack;
+                } catch (Exception e) {
+                    event.accept(itemStack, net.minecraft.world.item.CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+                }
             }
         }
     }

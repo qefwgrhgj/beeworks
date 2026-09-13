@@ -1,0 +1,49 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Client",
+      "presentation": {
+        "group": "Mod Development - beeworks",
+        "order": 0
+      },
+      "projectName": "beeworks",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@C:\\Users\\Admin\\Desktop\\mods\\build\\moddev\\clientRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@C:\\Users\\Admin\\Desktop\\mods\\build\\moddev\\clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dbeeworks%%C:\\Users\\Admin\\Desktop\\mods\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\run",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    },
+    {
+      "type": "java",
+      "request": "launch",
+      "name": "Server",
+      "presentation": {
+        "group": "Mod Development - beeworks",
+        "order": 1
+      },
+      "projectName": "beeworks",
+      "mainClass": "net.neoforged.devlaunch.Main",
+      "args": [
+        "@C:\\Users\\Admin\\Desktop\\mods\\build\\moddev\\serverRunProgramArgs.txt"
+      ],
+      "vmArgs": [
+        "@C:\\Users\\Admin\\Desktop\\mods\\build\\moddev\\serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dbeeworks%%C:\\Users\\Admin\\Desktop\\mods\\bin\\main"
+      ],
+      "cwd": "${workspaceFolder}\\run",
+      "env": {},
+      "console": "internalConsole",
+      "shortenCommandLine": "none"
+    }
+  ]
+}

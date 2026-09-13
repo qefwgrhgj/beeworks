@@ -5,6 +5,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public class Utils {
     public static BlockBehaviour.Properties copyPropertySafe(Block block) {
-        return BlockBehaviour.Properties.copy(block);
+        return BlockBehaviour.Properties.ofFullCopy(block);
     }
 }
